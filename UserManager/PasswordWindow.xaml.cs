@@ -1,4 +1,5 @@
-﻿using System.Windows;
+﻿using System.Text.RegularExpressions;
+using System.Windows;
 using System.Windows.Input;
 
 namespace UserManager
@@ -36,7 +37,7 @@ namespace UserManager
 
             }
         }
-
+        
         private void Login_Click(object sender, RoutedEventArgs e) => LogOn();
 
         private void Cancle_Click(object sender, RoutedEventArgs e)

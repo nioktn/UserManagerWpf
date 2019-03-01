@@ -1,4 +1,5 @@
-﻿using System.Windows;
+﻿using System.Text.RegularExpressions;
+using System.Windows;
 using UserManager.Domain;
 
 namespace UserManager
@@ -40,6 +41,10 @@ namespace UserManager
             {
                 MessageBox.Show("Не введені данні");
             }
+            else if (!CheckPassword(pass.Text))
+            {
+                MessageBox.Show("Пароль повинен включати букви, цифри та спеціальні знаки");
+            }
             else
             {
                 User user = new User(fam.Text, nm.Text, log.Text, pass.Text, int.Parse(act.Text));
@@ -50,6 +55,12 @@ namespace UserManager
                 mwind.Show();
                 this.Close();
             }
+        }
+
+        private bool CheckPassword(string password)
+        {
+            Regex rgx = new Regex(@"^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[^\da-zA-Z]).{8,15}$");
+            return rgx.IsMatch(password);
         }
     }
 }

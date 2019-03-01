@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using UserManager.DAL;
 using UserManager.Domain;
@@ -58,6 +59,12 @@ namespace UserManager.BLL
             }
 
             return true;
+        }
+
+        private bool CheckPassword(string password)
+        {
+            Regex rgx = new Regex(@"^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[^\da-zA-Z]).{8,15}$");
+            return rgx.IsMatch(password);
         }
 
         // додавання нового користувача

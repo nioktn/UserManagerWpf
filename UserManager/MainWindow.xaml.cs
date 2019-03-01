@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Text.RegularExpressions;
 using System.Windows;
 using UserManager.BLL;
 using UserManager.DAL;
@@ -64,6 +65,12 @@ namespace UserManager
             {
                 MessageBox.Show(ex.Message);
             }
+        }
+
+        private bool CheckPassword(string password)
+        {
+            Regex rgx = new Regex(@"^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[^\da-zA-Z]).{8,15}$");
+            return rgx.IsMatch(password);
         }
 
         // зміна даних
