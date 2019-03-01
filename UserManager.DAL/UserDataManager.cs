@@ -70,5 +70,26 @@ namespace UserManager.DAL
             user.Active = Convert.ToInt32(tokens[4]);
             return user;
         }
+
+        // повертає масив User із колекції
+        public User[] getUserArray()
+        {
+            User[] user = new User[userCollection.Count];
+            this.userCollection.CopyTo(user);
+            return user;
+        }
+
+        // повертає розмір колекції
+        public int getSize()
+        {
+            return this.userCollection.Count;
+        }
+
+        // додає користувача до колекції
+        public List<User> Add(User user)
+        {
+            this.userCollection.Add(user);
+            return this.userCollection;
+        }
     }
 }

@@ -2,6 +2,20 @@
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
        Title="Головне вікно" Height="378" Width="628" Background="LightBlue">
+    <Window.Resources>
+        <Style x:Key="GridStyle">
+            <Setter Property="Control.Background" Value="LemonChiffon"></Setter>
+        </Style>
+        <Style x:Key="MenuStyle">
+            <Setter Property="Control.Background" Value="Blue"></Setter>
+        </Style>
+        <Style x:Key="ListBoxStyle">
+            <Setter Property="Control.Background" Value="LightBlue"></Setter>
+            <Setter Property="Control.FontFamily" Value="Segoe Print"></Setter>
+            <Setter Property="Control.FontSize" Value="13"></Setter>
+            <Setter Property="Control.FontStyle" Value="Italic"></Setter>
+        </Style>
+    </Window.Resources>
     <Grid Name="DocumentRoot">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="200"/>
@@ -18,16 +32,16 @@
           Grid.Column="0" 
           Grid.ColumnSpan="2" 
           Grid.Row="0">
-            <Menu>
+            <Menu Name="menu1">
                 <MenuItem Header="Користувачі">
-                    <MenuItem Header="Показати користувачів" />
+                    <MenuItem Header="Показати користувачів" Click="ShowUser"/>
                 </MenuItem>
             </Menu>
-            <Menu>
-                <MenuItem Header="Стилі">
+            <Menu Name="menu2">
+                <MenuItem Header="Стилі" Click="GetStyle1">
                 </MenuItem>
             </Menu>
-            <Menu>
+            <Menu Name="menu3">
                 <MenuItem Header="Вихід">
                     <MenuItem Header="Вихід" Click="AppExit_Click">
                         <MenuItem.ToolTip>
@@ -54,6 +68,19 @@
                 </ToolBar>
             </Expander>
         </DockPanel>
-
+        <DockPanel
+            Grid.Column="0"
+          Grid.Row="2">
+            
+            <ListBox Name="listUser">
+                <ListBox.ContextMenu>
+                    <ContextMenu>
+                        <MenuItem Header="Додати користувача" Click="AddUser" />
+                        <MenuItem Header="Змінити дані користувача" Click="ChangeUser" />
+                        <MenuItem Header="Видалення користувача" Click="DeleteUser" />
+                    </ContextMenu>
+                </ListBox.ContextMenu>
+            </ListBox>
+        </DockPanel>
     </Grid>
 </Window>
