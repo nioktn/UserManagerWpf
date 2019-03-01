@@ -29,7 +29,7 @@
             </Menu>
             <Menu>
                 <MenuItem Header="Вихід">
-                    <MenuItem Header="Вихід">
+                    <MenuItem Header="Вихід" Click="AppExit_Click">
                         <MenuItem.ToolTip>
                             <ToolTip>
                                 Click here to exit
@@ -46,7 +46,7 @@
           Grid.Row="1">
             <Expander Margin="5" Padding="5" Header="Перезайти" >
                 <ToolBar>
-                    <Button>
+                    <Button Click="LogOut_Click">
                         <StackPanel>
                             <TextBlock Margin="3">ОК</TextBlock>
                         </StackPanel>

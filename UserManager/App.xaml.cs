@@ -20,7 +20,6 @@ namespace UserManager
         {
             try
             {
-
                 this.passwordWindow.WindowStartupLocation = WindowStartupLocation.CenterScreen;
 
                 passwordWindow.ShowDialog();

@@ -1,5 +1,4 @@
-﻿using System;
-using System.Windows;
+﻿using System.Windows;
 using System.Windows.Input;
 
 namespace UserManager
@@ -9,9 +8,11 @@ namespace UserManager
     /// </summary>
     public partial class PasswordWindow : Window
     {
+
         public PasswordWindow()
         {
             InitializeComponent();
+            txtLogin.Focus();
         }
 
         private void LogOn()
@@ -36,16 +37,17 @@ namespace UserManager
             }
         }
 
-        private void Login_Click(object sender, RoutedEventArgs e)
-        {
-            this.LogOn();
-        }
+        private void Login_Click(object sender, RoutedEventArgs e) => LogOn();
 
         private void Cancle_Click(object sender, RoutedEventArgs e)
         {
-            App application = ((App)Application.Current);
-            this.Close();
-            application.Shutdown();
+            Close();
+            Application.Current.Shutdown();
+        }
+
+        private void PasswordBox_KeyUp(object sender, KeyEventArgs e)
+        {
+            if (e.Key == System.Windows.Input.Key.Enter) LogOn();
         }
     }
 }
